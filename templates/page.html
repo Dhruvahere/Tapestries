@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ page.head_word }}{% endblock %}
+{% block content %}
+<h2>{{ page.subject }} · page {{ page.page_no }}</h2>
+<p>{{ page.topic }} · {{ page.head_word }} · unit {{ page.unit }}</p>
+<p class="calm">{{ prompt }}</p>
+<form method="post" action="{{ url_for('page_recall', page_id=page.id) }}">
+<input type="hidden" name="opened_at" value="{{ opened_at }}">
+<p>
+<button class="tap" type="submit" name="result" value="pass">Got it</button>
+<button class="tap miss" type="submit" name="result" value="fail">Missed it</button>
+</p>
+</form>
+<p class="note"><a href="{{ url_for('home') }}">Back to today</a></p>
+{% endblock %}

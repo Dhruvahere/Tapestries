@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Today</h2>
+{% if just %}<p class="calm">{{ just }}</p>{% endif %}
+
+{% if empty %}
+<p class="calm">{{ first_open }}</p>
+<p>You first should write some notes and label your pages by the index number. Then, document each page and you will be able to get some reccomendations on what to review.</p>
+<form method="post" action="{{ url_for('demo_load') }}">
+<p><button type="submit">Try a 3-minute demo</button></p>
+</form>
+<p><a href="{{ url_for('page_new') }}">Or add my first real page</a></p>
+{% else %}
+{% if demo_on %}
+<p class="note">These are examples pages with no real notes behind them.The notes are imaginary. If you do not want the demo and want to figure it out, press: "Start my own notebook"</p>
+<form method="post" action="{{ url_for('demo_clear') }}">
+<p><button type="submit">Start my own notebook</button></p>
+</form>
+{% endif %}
+
+<form method="post" action="{{ url_for('plan_save') }}">
+<p><label>Minutes I have today:
+<input type="number" name="minutes" min="0" max="720" step="5" value="{{ minutes }}" required></label></p>
+<p>Share the time across subjects. Suggested numbers come from how overdue each subject is. Change them if you would like.</p>
+<table>
+<tr><th>Subject</th><th>Weight</th></tr>
+{% for w in weight_rows %}
+<tr>
+<td>{{ w.name }}</td>
+<td><input type="number" name="weight_{{ w.id }}" min="0" step="0.1" value="{{ '%.1f'|format(w.weight) }}"></td>
+</tr>
+{% endfor %}
+</table>
+<p><button type="submit">{% if planned %}Update today's list{% else %}Make today's list{% endif %}</button></p>
+</form>
+
+{% if planned %}
+<p class="calm">{{ today_line }}</p>
+{% if chance %}<p class="note">{{ chance }}</p>{% endif %}
+{% for g in groups %}
+<h3>{{ g.name }} · {{ g.minutes_label }}</h3>
+<table>
+<tr><th>Page</th><th>Head word</th><th>Topic</th><th>About</th></tr>
+{% for p in g.pages %}
+<tr>
+<td><a href="{{ url_for('page_open', page_id=p.id) }}">{{ p.page_no }}</a></td>
+<td>{{ p.head_word }}</td>
+<td>{{ p.topic }}</td>
+<td>{{ g.page_time }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endfor %}
+{% endif %}
+{% endif %}
+
+<p>{{ week }}</p>
+{% endblock %}

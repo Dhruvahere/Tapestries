@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Tapestries{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+<h1><a href="{{ url_for('home') }}">
+<img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+Tapestries
+</a>
+</h1>
+<p class="tagline"><i>A companion to your commonplace notebook and notes..</i></p>
+<nav>
+<a href="{{ url_for('home') }}">Today</a> |
+<a href="{{ url_for('index') }}">Index</a> |
+<a href="{{ url_for('page_new') }}">New page</a> |
+<a href="{{ url_for('about') }}">About</a> |
+<a href="{{ url_for('docs') }}">Documentation</a>
+</nav>
+</header>
+<div class="content">
+{% block content %}{% endblock %}
+</div>
+<footer>By Dhruva Gadiparthi</footer>
+</body>
+</html>

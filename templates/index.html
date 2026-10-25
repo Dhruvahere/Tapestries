@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+<h2>Index</h2>
+<p>A pointer to each notebook page. The notes stay in the notebook.</p>
+{% if pages %}
+<table>
+<tr><th>Subject</th><th>Unit</th><th>Page</th><th>Head word</th><th>Topic</th></tr>
+{% for p in pages %}
+<tr>
+<td>{{ p.subject }}</td>
+<td>{{ p.unit }}</td>
+<td><a href="{{ url_for('page_open', page_id=p.id) }}">{{ p.page_no }}</a></td>
+<td>{{ p.head_word }}</td>
+<td>{{ p.topic }}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>No pages yet. <a href="{{ url_for('page_new') }}">Add one.</a></p>
+{% endif %}
+{% endblock %}

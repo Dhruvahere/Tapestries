@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Documentation{% endblock %}
+{% block content %}
+<h2>Documentation</h2>
+<p>Tapestries is technically, is simply a database that only stores the identity of the pages you can give it.  Each day via a Monte Carlo sampler it recommends which pages to recall, split across your subjects to fit the minutes you have according to the weights you assign.</p>
+
+<h3>Quick start</h3>
+<ol>
+<li>Write notes in a numbered notebook. Pick a distint head word for the page. It is reccomended you number your notebooks and have an organized system within one notebook, or across multiple.</li>
+<li>Open <b>New page</b> and type subject, unit, topic, page number and head word.</li>
+<li>On <b>Today</b>, enter how many minutes you have available to review that day. The weights start from how overdue each subject is. If you have your own preferred weight regime, you can change them as you like.</li>
+<li>Open the first page on the list. Close the notebook, recall it, then check. Tap <b>Got it</b> or <b>Missed it</b>. The app will track the gap.</li>
+</ol>
+
+<h3>When a page comes back</h3>
+<p>Every page lives in one of five boxes, waiting {{ ladder|join(", then ") }} days. A pass moves it one box further out. A miss puts it back in the first box. These lengths are simply data to just give a clue if you are learning properly or if you need to do more quizzes or rereads.</p>
+<p><b>Held</b> means {{ held }} passes in a row, each on a different day. Cramming the same page twice in one day does not count. After a gap, nothing special happens: overdue pages simply rank higher, and the list still fits today's minutes. The leftover pages are never listed as a backlog.</p>
+
+<h3>How today's split is chosen</h3>
+<p>Once a subject has about {{ min_logs }} timed recalls (walked-away taps over {{ cap }} minutes are ignored), the app fits a simple curve to how long that subject really takes. It then tries many minute splits around your weights, plays out a thousand pretend days for each (using a statistical sampling method known as Monte Carlo sampling), and keeps the split that finishes the most at-risk pages. You see the pages that fit, the minutes given to each subject, about how long each page usually takes, and a probabillity of getting the  most  at-risk pages done. </p>
+<p>Until there is enough timing data, the list is a weight-proportional split. If your times barely vary, the simulated split will look the same as the proportional one.  This is to ensure the algorithm doesn't fit on minimum data and gives you a false reading of your progress.</p>
+
+<h3>What the app does not include</h3>
+<ul>
+<li>It does not store note content, generate questions, or auto-tag anything.</li>
+<li>It does not use artificial intelligence, only simple statistical methods.</li>
+<li>It does not show streaks, and it is definetly not attempting to stress the user out.</li>
+<li>It does not ask for any personal information whatsoever, and the data is only stored on your own device. There is no cloud server that is collecting your data.</li>
+</ul>
+
+<h3>Limits</h3>
+<ul>
+<li>The box lengths are a parameter to test, not a law of memory.</li>
+<li>Tapestries is a study aid. It does not diagnose or treat anything, nor is it a prescribed method to see what the user's learning style is. There is no therapeutic purpose of the app.</li>
+</ul>
+
+<h3>Sources and Inspirations for the App</h3>
+<ul>
+<li>John Locke, <i>A New Method of Making Common-Place-Books</i> (1685; English 1706).</li>
+<li>Sebastian Leitner (1972), <i>So lernt man lernen</i>: the five-box return rule.</li>
+<li>Roediger and Karpicke (2006), "Test-Enhanced Learning."</li>
+<li>Cepeda, Pashler, Vul, Wixted and Rohrer (2006), "Distributed Practice in Verbal Recall Tasks."</li>
+<li>Anki's FSRS workload simulator: the idea of replaying your own times to plan a day.</li>
+</ul>
+{% endblock %}

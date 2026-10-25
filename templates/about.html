@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>About</h2>
+<p>
+    Tapestries is inspired by John Locke's 1685 commonplace-book index, but also by the concept of a tapestry.
+    A tapestry is a large, complex work of art that is made up of many small pieces. Each piece is a different color and texture, and when they are put together, they create a unified whole.
+    Similarly, any type of concept, idea, or topic, is simply the sum of all of many smaller pieces. One cannot perfectly recreate a tapestry, but one can weave their own interpretation of it. And with this, every index (page) can be a single string. One may need alot of strings to weave their tapestry of understanding, but this app hopes to make the weaving process that is learning a little esier. 
+    In the modern age, technology and artificial intelligence have been intersected greatly into learning, yet can be overwhelming for some. Any aid, if it works, is most helpful, I hope that this app can be that aid for you, without overwhelming you.
+ </p>
+
+<div class="figures">
+<figure class = "portrait">
+<img src="{{ url_for('static', filename='images/locke.jpg') }}" alt="Portrait of John Locke">
+<figcaption>John Locke, by Sir Godfrey Kneller, 1697.</figcaption>
+</figure>  
+<figure class = "landscape">
+<img src="{{ url_for('static', filename='images/tapestry.jpg') }}" alt="A panel of the Apocalypse Tapestry">
+<figcaption>The Apocalypse Tapestry, Angers, c. 1377–1382.</figcaption>
+</figure>
+</div>
+
+<p>Each day it gives you a short list of pages to recall, split across your subjects to fit the minutes you have. The thinking stays in the notebook. There is no account, no cloud, and no artificial intelligence.</p>
+
+<p class="note">Header and icon illustration: hand-drawn knitting spool, via Vecteezy. See the license in the app folder.</p>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}New page{% endblock %}
+{% block content %}
+<h2>New page</h2>
+<p> This works for a class, a craft, a language, a recipe, sheet music, or really anything. There should be one line per notebook page. The notes should stay in the notebook to gain the benefit of muscle memory. </p>
+<p>One index line per notebook page, not per fact. Type the pointer. Write nothing of the notes.</p>
+<p class="note">Subject can be “Statistical Mechanics” or “Violin” or “Making Daifuku Mochi” Unit is a chapter, a week, or a loaf number.</p>
+<form method="post" action="{{ url_for('page_create') }}">
+<p><label>Subject:
+<select name="subject">
+<option value="">(new)</option>
+{% for s in subjects %}<option value="{{ s.name }}">{{ s.name }}</option>{% endfor %}
+</select></label>
+<label>or new: <input type="text" name="subject_new"></label></p>
+<p><label>Unit: <input type="text" name="unit" required></label></p>
+<p><label>Topic: <input type="text" name="topic" required></label></p>
+<p><label>Page number: <input type="text" name="page_no" required></label></p>
+<p><label>Head word: <input type="text" name="head_word" required></label></p>
+<p><button type="submit">Add to index</button></p>
+</form>
+{% endblock %}
