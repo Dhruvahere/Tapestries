@@ -1,9 +1,9 @@
 
 ## What you need
 
-Python 3.10 or newer. Built and tested on macOS.
+You should atleast have Python 3.10 and also, please note, this has only been tested MacOS, nothing else!
 
-These commands start from your home folder in Terminal. 
+
 
 ## Install
 
