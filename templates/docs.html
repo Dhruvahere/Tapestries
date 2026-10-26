@@ -2,19 +2,19 @@
 {% block title %}Documentation{% endblock %}
 {% block content %}
 <h2>Documentation</h2>
-<p>Tapestries is technically, is simply a database that only stores the identity of the pages you can give it.  Each day via a Monte Carlo sampler it recommends which pages to recall, split across your subjects to fit the minutes you have according to the weights you assign.</p>
+<p>Tapestries is technically, is simply a database that only stores the identity of the pages you can give it.  Each day via Monte Carlo sampler it recommends which pages to recall, split across your subjects and topics to fit the minutes you have according to the importance you assign to each by an integer weight.</p>
 
 <h3>Quick start</h3>
 <ol>
-<li>Write notes in a numbered notebook. Pick a distint head word for the page. It is reccomended you number your notebooks and have an organized system within one notebook, or across multiple.</li>
+<li>First, write some notes in a notebook of your choosing. If you are just starting out, maintain an "index" system. An index is essentially the page number. Your first page will be 0.  Pick a distinct head word for the page that best summarizes the contents. You may choose to write all your notes in a single notebook or have multiple notebooks. But atleast maintain the basic structure so entering in indices will be easier.</li>
 <li>Open <b>New page</b> and type subject, unit, topic, page number and head word.</li>
 <li>On <b>Today</b>, enter how many minutes you have available to review that day. The weights start from how overdue each subject is. If you have your own preferred weight regime, you can change them as you like.</li>
 <li>Open the first page on the list. Close the notebook, recall it, then check. Tap <b>Got it</b> or <b>Missed it</b>. The app will track the gap.</li>
 </ol>
 
 <h3>When a page comes back</h3>
-<p>Every page lives in one of five boxes, waiting {{ ladder|join(", then ") }} days. A pass moves it one box further out. A miss puts it back in the first box. These lengths are simply data to just give a clue if you are learning properly or if you need to do more quizzes or rereads.</p>
-<p><b>Held</b> means {{ held }} passes in a row, each on a different day. Cramming the same page twice in one day does not count. After a gap, nothing special happens: overdue pages simply rank higher, and the list still fits today's minutes. The leftover pages are never listed as a backlog.</p>
+<p>Every page lives in one of five boxes, waiting {{ ladder|join(", then ") }} days. A pass moves it one box further out. A miss puts it back in the first box. These lengths are simply data to just give a clue if you are learning properly or if you need to do more work or rereads.</p>
+<p><b>Held</b> means {{ held }} passes in a row, each on a different day. Cramming the same page twice in one day does not count. After a gap, nothing special happens. Overdue pages will just rank higher, and the list still fits today's minutes. The leftover pages are never listed as a backlog.</p>
 
 <h3>How today's split is chosen</h3>
 <p>Once a subject has about {{ min_logs }} timed recalls (walked-away taps over {{ cap }} minutes are ignored), the app fits a simple curve to how long that subject really takes. It then tries many minute splits around your weights, plays out a thousand pretend days for each (using a statistical sampling method known as Monte Carlo sampling), and keeps the split that finishes the most at-risk pages. You see the pages that fit, the minutes given to each subject, about how long each page usually takes, and a probabillity of getting the  most  at-risk pages done. </p>
