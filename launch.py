@@ -1,3 +1,9 @@
+#hiiiii! you are in the launcher. i also do not recommend you tamper with this. 
+
+
+
+
+
 import threading
 import time
 import webbrowser
