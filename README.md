@@ -1,11 +1,11 @@
 
-## What you need
+## What You Need:
 
 You should atleast have Python 3.10 and also, please note, this has only been tested MacOS, nothing else!
 
 
 
-## Install
+## How to Install 
 
 Copy and paste this block:
 
@@ -21,32 +21,32 @@ pip install -e .
 
 `cd Tapestries` is the folder the clone just created,.
 
-`pip install -r requirements.txt` installs Flask, pywebview, and numpy. `pip install -e .` makes the `tapestries` command.
+`pip install -r requirements.txt` installs the libraries Flask, pywebview, and numpy. `pip install -e .` makes the `tapestries` command.
 
-## Run
+## How To Open:
 
-The venv must be on. After that, `tapestries` works from any folder:
+The venv must be on. After that, `tapestries` works from any directory in your computer.
 
 ```bash
 source ~/Tapestries/.venv/bin/activate
 tapestries
 ```
 
-If the command is not found:
+If The Command Is Not Found:
 
 ```bash
 source ~/Tapestries/.venv/bin/activate
 python ~/Tapestries/launch.py
 ```
 
-## Where your data lives
+## Data Storage: 
 
 `~/Library/Application Support/Tapestries/tapestries.db`
 
-It stays on that computer. Closing the window does not delete it.
+Don't worry, when you close the terminal app, your data doesn't go poof! It will stay right there in the SQLite Data storage. 
 
 ## Art
 
-Header and icon: hand-drawn knitting spool via Vecteezy. License PDF is in `static/images/`.
+Header and icon: hand-drawn knitting spool from Vecteezy. License PDF is in `static/images/`!
 
 By Dhruva Gadiparthi.
