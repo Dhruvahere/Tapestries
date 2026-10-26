@@ -1,3 +1,6 @@
+#here is where ALL the monte carlo math is! sampling as the eye can see! (literally)
+
+
 
 import json
 import math
