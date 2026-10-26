@@ -1,4 +1,4 @@
-#please do not try to change this. this is the database calller.
+#please do not try to change this. this is the database calller that fetches all your precious data!
 
 import sqlite3
 from pathlib import Path
