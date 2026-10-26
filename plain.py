@@ -1,7 +1,7 @@
 #This is how the app talks to you!!! 
 
 def first_open():
-    return "It is recommended that you try this instead, the demo is a bit annoying, so just log some pages you have already written!"
+    return "You do not have to set this up. Try the demo, or add one page you already wrote."
 
 def _pages(n):
     return "1 page" if n == 1 else f"{n} pages"
@@ -13,14 +13,14 @@ def _topics(n):
 
 def today_line(n_left, minutes, kind):
     if n_left == 0:
-        return "You are done!"
-    label = "from your own times" if kind == "simulated" else "a first-pass split until we have more timed recalls"
+        return "All done! "
+    label = "from your own times" if kind == "simulated" else "a first-pass split until you have more timed recalls"
     return f"Today: {_pages(n_left)} in about {minutes} minutes ({label}). Open the first page and recall it."
 
 
 def weekly_line(total, parts):
     if total == 0:
-        return "If it is held, that means three passes, on three different days. You don't have any yet, that is normal."
+        return "Held means three failed attempts, on three different days. At the start, there shouldn't be any. "
     bits = ", ".join(f"{p['name']} {p['n']}" for p in parts if p["n"])
     extra = f" ({bits})" if bits else ""
     return f"{_topics(total)}.{extra}"
@@ -28,8 +28,8 @@ def weekly_line(total, parts):
 
 def after_tap(result, due_on):
     if result == "pass":
-        return f"Good job! Don't abandon this, it will come back on {due_on}."
-    return f"Valiant Effort! Study up, this comes back on({due_on})!"
+        return f"That page will come back on {due_on}."
+    return f"Valiant effort! Study up for another recall on({due_on})."
 
 
 def chance_line(p_top):
@@ -59,5 +59,5 @@ def page_time_phrase(seconds):
 
 
 def open_prompt(page):
-    return (f"Close your notebook, then recall the contents of page {page['page_no'], }{page['head_word'].}"
-            f"Then open the notebook and check if you were right. Tap one button when you know.")
+    return (f"Close the notebook first. Recall page {page['page_no']}, {page['head_word']}. "
+            f"then open the notebook and check. Tap the button if you really know.")
