@@ -1,4 +1,6 @@
-"""Leitner boxes for notebook pages. Pure logic, no Flask."""
+# you want to know what the boxes are? here they are, they are a more insignificant part of the project, but they are actually derived from leitner.
+
+
 from datetime import date, datetime, timedelta, timezone
 
 # Box 1..5. A conventional starting ladder, not an optimized one.
